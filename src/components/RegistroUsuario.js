@@ -45,7 +45,7 @@ const RegistroUsuario = () => {
 
     // Mostrar mensaje de éxito
     showMessage('Usuario registrado correctamente', 'success', 'Aceptar');
-    navigate('/iniciar');
+    navigate('/turnos');
   };
 
   return (

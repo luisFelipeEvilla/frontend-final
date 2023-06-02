@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: full;
+}
+
+.form-container {
+    max-width: 600px;
+    min-width: 400px;   
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-container .title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.field-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.field {
+    width: 100%;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    height: 100px;
+}
