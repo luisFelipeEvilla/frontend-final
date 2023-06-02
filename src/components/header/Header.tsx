@@ -10,7 +10,7 @@ function Header() {
         <button>Buscar</button>
       </div>
       <div className="header-right">
-        <Link className="link" to="/iniciar"> Iniciar sesion </Link>
+        <Link className="link" to="/login"> Iniciar sesion </Link>
         <Link className="link" to="/registro"> Registrarse </Link>
       </div>
     </header>
