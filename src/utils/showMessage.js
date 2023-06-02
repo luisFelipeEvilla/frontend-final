@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 
 const showMessage = (title, icon, confirmButtonText) => {
-    Swal.fire({
+    return Swal.fire({
         title,
         icon,
         confirmButtonText
