@@ -1,0 +1,57 @@
+/* Estilos para el encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #673ab7;
+  padding: 20px;
+}
+
+/* Estilos para el lado izquierdo del encabezado */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el campo de búsqueda */
+.header-left input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 10px;
+}
+
+/* Estilos para el botón de búsqueda */
+.header-left button {
+  padding: 8px 16px;
+  background-color: #fad9db;
+  color: #706d6d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos para el lado derecho del encabezado */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para los enlaces de navegación */
+.header-right a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #fbfbfb;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.header-right a:hover {
+  background-color: #fad9db;
+  color: #313131;
+}
+
+
+  
