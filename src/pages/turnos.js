@@ -68,6 +68,9 @@ const TurnosPage = () => {
 
     // actualizar el estado
     setTurnos(nuevosTurnos);
+
+    // mostrar mensaje de exito
+    showMessage('Turno eliminado exitosamente', 'success', 'Aceptar');
   }
 
   return (
@@ -91,17 +94,24 @@ const TurnosPage = () => {
             </form>
           </div>
 
-          <div>
+          <div className='turno-container'>
             <h1>Turnos</h1>
-            {
-              turnos.map((turno) => (
-                <div key={turno.uuid} className="card">
-                  <p className="card-title">{turno.fecha}</p>
-                  <p className="card-description">{turno.motivo}</p>
-                  <button onClick={() => handleDelete(turno.uuid)} className="delete-button">x</button>
-                </div>
-              ))
-            }
+
+            <div className='turnos'>
+              {
+                turnos.map((turno) => (
+                  <div key={turno.uuid} className="turno">
+                    <div className='turno-content'>
+                      <p className="turno-title">{turno.fecha}</p>
+                      <p className="turno-description">{turno.motivo}</p>
+                    </div>
+
+                    <button className="delete-turno-btn" onClick={() => handleDelete(turno.uuid)}>x</button>
+                  </div>
+                ))
+              }
+            </div>
+
 
           </div>
         </div>
