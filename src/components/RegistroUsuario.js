@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const RegistroUsuario = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [telefono, setTelefono] = useState('');
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const RegistroUsuario = () => {
     const nuevoUsuario = {
       nombre,
       email,
+      password,
       telefono,
     };
 
@@ -41,6 +43,7 @@ const RegistroUsuario = () => {
     setNombre('');
     setEmail('');
     setTelefono('');
+    setPassword('');
 
     Swal.fire({
       title: 'Usuario registrado exitosamente',
@@ -122,6 +125,8 @@ const RegistroUsuario = () => {
                             type="password"
                             id="emailInput"
                             placeholder="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
                             style={{fontFamily:"Arial",border: "solid" , borderColor: "#673ab7", borderRadius: 0, borderWidth: "2px"}}
                             
                           />

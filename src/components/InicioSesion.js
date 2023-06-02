@@ -5,6 +5,7 @@ import "./iniciosesion.css";
 
 const InicioSesion = ({ onLogin }) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // Función para manejar el envío del formulario de inicio de sesión
   const handleSubmit = (event) => {
@@ -17,7 +18,7 @@ const InicioSesion = ({ onLogin }) => {
     }
 
     // Llamar a la función onLogin con el correo electrónico
-    onLogin(email);
+    onLogin(email, password);
   };
 
   return (
@@ -68,6 +69,8 @@ const InicioSesion = ({ onLogin }) => {
                             className="form-control form-control-user mt-4"
                             type="password"
                             id="emailInput"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
                             placeholder="Password"
                             style={{fontFamily:"Arial",border: "solid" , borderColor: "#673ab7", borderRadius: 0, borderWidth: "2px"}}
                             
