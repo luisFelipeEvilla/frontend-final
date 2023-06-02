@@ -4,6 +4,8 @@ import InicioSesion from '../components/InicioSesion';
 import CalendarioMensual from '../components/CalendarioMensual';
 import CuentaUsuario from '../components/CuentaUsuario';
 import showMessage from '../utils/showMessage';
+import Navbar from '../components/layout/navbar';
+import Hero from '../components/hero/Hero';
 
 
 const IniciarSesionPage = () => {
@@ -56,31 +58,9 @@ const IniciarSesionPage = () => {
     <div>
       {usuarioActual ? (
         <>
-          <nav class="navbar navbar-expand-lg navbar-light py-3" style={{ backgroundColor: "#673ab7" }}>
-            <div class="container px-5">
-              <a class="navbar-brand" href="index.html"><span class="fw-bolder" style={{ color: "white" }}>Mi Perfil</span></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                  <li class="nav-item"><a class="nav-link" href="/" style={{ color: "white" }}>Salir</a></li>
-                  <li class="nav-item"><img class="img-fluid" src="https://static.vecteezy.com/system/resources/previews/009/350/845/original/arrow-cursor-pointer-logout-exit-png.png" alt="..." style={{ width: 30, height: 25, marginTop: 8 }} /></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          <Navbar/>
+          <Hero usuarioActual={usuarioActual}/>
           <div>
-            <div class="container px-5 my-5">
-              <div class="text-center mb-5">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Bienvenid@, {usuarioActual.nombre}!</span></h1>
-              </div>
-              <div class="row gx-5 justify-content-center">
-                <div class="col-lg-11 col-xl-9 col-xxl-8">
-
-                  <div class="pb-5"></div>
-
-                </div>
-              </div>
-            </div>
             {/* <p>Teléfono: {usuarioActual.telefono}</p> */}
             <CalendarioMensual onSeleccionarFecha={handleSeleccionarFecha} usuarioId={usuarioActual.email} />
             <div class="container px-5">
