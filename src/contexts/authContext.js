@@ -7,10 +7,8 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState({});
     const [token, setToken] = useState('');
 
-    useEffect(() => {
-        // Comprueba si el usuario ya ha iniciado sesión
+    const checkLogin = () => {
         const cookies = parseCookies();
-
         try {
             const userData = JSON.parse(cookies.user);
             const token = cookies.token;
@@ -23,17 +21,10 @@ export function AuthProvider({ children }) {
             console.error(error);
             window.location.href = '/iniciar';
         }
-    }, []);
+    }
 
-    const login = (user, token) => {
+    const login = (user) => {
         setUser(user);
-        setToken(token);
-
-        // save token in cookies
-        setCookie(null, 'token', token, {
-            maxAge: 30 * 24 * 60 * 60,
-            path: '/'
-        });
 
         // save user in cookies
         setCookie(null, 'user', JSON.stringify(user), {
@@ -44,13 +35,6 @@ export function AuthProvider({ children }) {
 
     const logout = () => {
         setUser({});
-        setToken(null);
-
-        // remove token from cookies
-        setCookie(null, 'token', '', {
-            maxAge: -1,
-            path: '/'
-        });
 
         // remove user from cookies
         setCookie(null, 'user', '', {

@@ -3,8 +3,8 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import GenericInput from './inputs/genericInput';
 import PrimaryButton from './buttons/primaryButton';
-
-
+import { AuthContext } from "../contexts/authContext";
+import showMessage from '../utils/showMessage';
 
 const RegistroUsuario = () => {
   const [nombre, setNombre] = useState('');
@@ -13,20 +13,14 @@ const RegistroUsuario = () => {
   const [telefono, setTelefono] = useState('');
   const navigate = useNavigate();
 
+  const { login } = React.useContext(AuthContext);
+
   // Función para manejar el envío del formulario
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // Validar los datos del formulario
-    if (!nombre || !email || !telefono) {
-      Swal.fire({
-        title: 'Por favor, ingrese todos los datos',
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      })
-        ;
-      return;
-    }
+    if (!nombre || !email || !telefono || !password)  showMessage('error', 'Todos los campos son obligatorios', 'Aceptar');
 
     // Crear un objeto con los datos del usuario
     const nuevoUsuario = {
@@ -36,23 +30,22 @@ const RegistroUsuario = () => {
       telefono,
     };
 
-    // Guardar el usuario en localStorage
+    // cargar lista de usuarios
     const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    // comprobar que el usuario no exista
+    const usuarioExistente = usuariosGuardados.find((usuario) => usuario.email === email);
+    if (usuarioExistente) return showMessage('El usuario ya existe', 'error', 'Aceptar');
+
+    // Guardar el usuario en el local storage
     usuariosGuardados.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
 
-    // Limpiar los campos del formulario
-    setNombre('');
-    setEmail('');
-    setTelefono('');
-    setPassword('');
+    // guardar sesion del usuario en el contexto (cookies)
+    login(nuevoUsuario);
 
-    Swal.fire({
-      title: 'Usuario registrado exitosamente',
-      icon: 'success',
-      confirmButtonText: 'Aceptar',
-    })
-      ;
+    // Mostrar mensaje de éxito
+    showMessage('Usuario registrado correctamente', 'success', 'Aceptar');
     navigate('/iniciar');
   };
 
