@@ -4,10 +4,12 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import Iniciar from './pages/IniciarSesionPage'
+import Turnos from './pages/turnos'
 import HomePage from './pages/Homepage'
 import Registro from './pages/RegistroPage'
+
 import { AuthProvider } from "./contexts/authContext";
+import Login from './components/InicioSesion'
 
 function App() {
   return (
@@ -15,8 +17,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/iniciar" element={<Iniciar />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/turnos" element={<Turnos />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

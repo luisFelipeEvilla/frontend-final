@@ -5,21 +5,21 @@ export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState({});
-    const [token, setToken] = useState('');
 
-    const checkLogin = () => {
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
+    const checkLogin = async () => {
         const cookies = parseCookies();
-        try {
-            const userData = JSON.parse(cookies.user);
-            const token = cookies.token;
 
-            if (userData && token) {
-                setUser(userData);
-                setToken(token);
-            }
-        } catch (error) {
-            console.error(error);
-            window.location.href = '/iniciar';
+        console.log(cookies);
+        if (!cookies.user) {
+            return null;
+        } else {
+            const user = await JSON.parse(cookies.user);
+
+            return user;
         }
     }
 
@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, checkLogin }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import GenericInput from './inputs/genericInput';
 import PrimaryButton from './buttons/primaryButton';
